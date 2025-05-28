@@ -1,7 +1,13 @@
 import RouteProvider from "./Router";
+import * as S from "./styles";
 
 function App() {
-  return <RouteProvider />;
+  return (
+    <>
+      <S.CSSReset />
+      <RouteProvider />
+    </>
+  );
 }
 
 export default App;

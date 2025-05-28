@@ -1,5 +1,5 @@
 {
-  "name": "didomi-consent-collector",
+  "name": "consent-collector",
   "private": true,
   "version": "1.0.0",
   "type": "module",

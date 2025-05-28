@@ -1,54 +1,39 @@
-# React + TypeScript + Vite
+# 🖥️ Didomi Consent Collector
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h1 align="center">
+  <img src="https://cdn.prod.website-files.com/6669c8e8dad8d17885f7aa3a/667db9b063c1a6ff2e72edc6_Dark.svg" width="200px" />
+</h1>
 
-Currently, two official plugins are available:
+## 🔎️ Description
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Didomi's Front-end engineering challenge.
 
-## Expanding the ESLint configuration
+## 📦 Project Dependencies
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+To run this project, make sure you have the following installed:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+• Node.js v20.11.1 (or use the version defined in .nvmrc)
+• NVM (Node Version Manager)
+• Yarn
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## ▶️ Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Follow these steps to set up and run the project locally:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+1. Use the correct Node version:`nvm use`
+2. Install project dependencies: `yarn`
+3. Start the development server: `yarn dev`
+
+The app should now be running at http://localhost:5173.
+
+## 🚀️ Technologies
+
+- Vite
+- React.js
+- TypeScript
+
+---
+
+Thank you and good coding 😎️
+
+Made by **Paulo Lima 🤓️**

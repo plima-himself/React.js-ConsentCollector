@@ -4,10 +4,10 @@ import {
   Navigate,
   Route,
 } from "react-router-dom";
-import paths from "./paths";
 import GiveConsentPage from "pages/GiveConsentPage";
 import ConsentsPage from "pages/ConsentsPage";
 import AppLayout from "./AppLayout";
+import paths from "paths";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

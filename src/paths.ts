@@ -1,4 +1,6 @@
-import type { PathConfiguration } from "./types";
+export type PathConfiguration = {
+  value: string;
+};
 
 const paths = {
   giveConsent: {

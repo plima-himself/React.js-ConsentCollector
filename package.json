@@ -13,18 +13,19 @@
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@fontsource/montserrat": "^5.2.5",
+    "@hookform/resolvers": "^5.0.1",
     "@mui/material": "^7.1.0",
     "@mui/styled-engine-sc": "^7.1.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-hook-form": "^7.56.4",
     "react-router-dom": "^7.6.1",
-    "styled-components": "^6.1.18"
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
-    "@types/styled-components": "^5.1.34",
     "@vitejs/plugin-react": "^4.4.1",
     "babel-plugin-styled-components": "^2.1.4",
     "eslint": "^9.25.0",
@@ -34,8 +35,5 @@
     "typescript-eslint": "^8.30.1",
     "vite": "^6.3.5",
     "vite-tsconfig-paths": "^5.1.4"
-  },
-  "resolutions": {
-    "styled-components": "^5"
   }
 }

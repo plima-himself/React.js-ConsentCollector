@@ -20,6 +20,7 @@ const NavigationTabs: React.FC<NavigationTabsProps> = ({
     <S.Root
       aria-label="Navigations tab."
       role="navigation"
+      variant="scrollable"
       value={tabs.findIndex((tab) => location.pathname.startsWith(tab.to))}
       {...{ orientation, className }}
     >
@@ -27,7 +28,6 @@ const NavigationTabs: React.FC<NavigationTabsProps> = ({
         <Tab
           key={tabProps.to}
           component={Link}
-          {...tabProps}
           sx={{
             alignItems: orientation === "horizontal" ? "center" : "flex-end",
             color: "#bdbdbd",
@@ -35,6 +35,7 @@ const NavigationTabs: React.FC<NavigationTabsProps> = ({
               color: "#fafafa",
             },
           }}
+          {...tabProps}
         />
       ))}
     </S.Root>

@@ -1,12 +1,13 @@
 import RouteProvider from "./Router";
-import * as S from "./styles";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { theme } from "./theme";
 
 function App() {
   return (
-    <>
-      <S.CSSReset />
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <RouteProvider />
-    </>
+    </ThemeProvider>
   );
 }
 

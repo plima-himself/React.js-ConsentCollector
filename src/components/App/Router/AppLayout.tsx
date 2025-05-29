@@ -3,19 +3,17 @@ import * as S from "./styles";
 import NavigationTabs from "components/NavigationTabs";
 import { DEFAULT_APP_TABS } from "./constants";
 import { MOBILE_BREAKPOINT_PX } from "config";
-import useScreenSize from "hooks/useScreenSize";
+import { useMediaQuery } from "@mui/material";
 
 const AppLayout: React.FC = () => {
-  const { width } = useScreenSize();
+  const isMobile = useMediaQuery(`(max-width:${MOBILE_BREAKPOINT_PX}px)`);
 
   return (
     <S.Root>
-      <S.Container>
+      <S.Container sx={{ flexDirection: isMobile ? "column" : "row" }}>
         <NavigationTabs
           tabs={DEFAULT_APP_TABS}
-          orientation={
-            width <= MOBILE_BREAKPOINT_PX ? "horizontal" : "vertical"
-          }
+          orientation={isMobile ? "horizontal" : "vertical"}
         />
 
         <S.OutletContainer>

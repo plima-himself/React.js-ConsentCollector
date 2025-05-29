@@ -14,7 +14,7 @@ const CollectedConsentsTableHead: React.FC = () => {
         </TableCell>
 
         <TableCell sx={{ width: "55%" }}>
-          <strong>Consent</strong>
+          <strong>Consent given for</strong>
         </TableCell>
       </TableRow>
     </TableHead>

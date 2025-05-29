@@ -25,11 +25,12 @@ export const Container = styled(Box)(({ theme }) => ({
   width: "100%",
 }));
 
-export const OutletContainer = styled(Box)({
+export const OutletContainer = styled(Box)(({ theme }) => ({
   width: "100%",
   height: "100%",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
   flexGrow: 1,
-});
+  paddingLeft: theme.spacing(3),
+}));

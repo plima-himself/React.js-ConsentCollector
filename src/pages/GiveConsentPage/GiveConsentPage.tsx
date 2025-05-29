@@ -44,7 +44,7 @@ const GiveConsentPage: React.FC = () => {
         />
 
         <CheckboxGroup<GiveConsentFormData>
-          label="I agree to:"
+          label="I agree to"
           fields={PREFERENCE_FIELDS}
           control={control}
         />

@@ -13,7 +13,12 @@ const GlassContainer: React.FC<GlassContainerProps> = ({
   children,
 }) => {
   return (
-    <S.Root className={className}>
+    <S.Root
+      initial={{ scale: 0.5, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={{ type: "spring", stiffness: 260, damping: 20 }}
+      className={className}
+    >
       {title && (
         <Typography gutterBottom variant="h5">
           {title}

@@ -1,6 +1,7 @@
 import AxiosMockAdapter from "axios-mock-adapter";
 import { request } from "./http";
 
+// Type definitions for pagination metadata and consent structure.
 export type Pagination = {
   page: number;
   perPage: number;
@@ -22,8 +23,13 @@ type PaginateResult<T> = {
   pagination: Pagination;
 };
 
+// Key used for storing mock data in browser localStorage.
 const STORAGE_KEY = "mock_consents";
 
+/**
+ * Safely loads consents from localStorage. Returns an empty array if parsing
+ * fails or data is missing.
+ */
 function loadConsentsFromStorage(): Consent[] {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -34,10 +40,17 @@ function loadConsentsFromStorage(): Consent[] {
   }
 }
 
+/**
+ * Saves the given consents array to localStorage in stringified format.
+ */
 function saveConsentsToStorage(consents: Consent[]): void {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(consents));
 }
 
+/**
+ * Utility to paginate an in-memory array. Returns both sliced data and metadata
+ * for total items and pages.
+ */
 function paginate<T>(
   array: T[],
   page: number,
@@ -56,6 +69,10 @@ function paginate<T>(
   };
 }
 
+/**
+ * Seeds localStorage with initial consent data if none is present.
+ * Prevents overriding existing data.
+ */
 function initializeMockConsents(): void {
   if (localStorage.getItem(STORAGE_KEY)) {
     return undefined;
@@ -87,6 +104,11 @@ function initializeMockConsents(): void {
   saveConsentsToStorage(initialConsents);
 }
 
+/**
+ * Configures Axios Mock Adapter to simulate /consents endpoints.
+ * - GET /consents: returns paginated results.
+ * - POST /consents: stores a new consent entry.
+ */
 export function setupAxiosMock() {
   initializeMockConsents();
 

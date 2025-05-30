@@ -1,5 +1,5 @@
 import { Tabs } from "@mui/material";
-import { styled } from "@mui/material/styles"; // import { MOBILE_BREAKPOINT_PX } from "config";
+import { styled } from "@mui/material/styles";
 
 export const Root = styled(Tabs)({
   flex: "none",

@@ -29,6 +29,7 @@ const GiveConsentPage: React.FC = () => {
   const { mutateAsync: giveConsent, isLoading } = useGiveConsent();
   const navigate = useNavigate();
 
+  // Handle form submission by sending consent data and redirecting to the consents list.
   const onSubmit = async (data: GiveConsentFormData) => {
     await giveConsent(data as AddConsentArgs);
 
@@ -61,6 +62,7 @@ const GiveConsentPage: React.FC = () => {
           disabled={isLoading}
         />
 
+        {/* Displays a general error if no consents are selected */}
         {errors.consents?.message && (
           <Typography color="error" variant="body2" sx={{ mt: 1 }}>
             {errors.consents.message}

@@ -11,7 +11,7 @@ export default defineConfig(({ command }) => ({
     tsconfigPaths(),
     react({
       // In local development mode, add component names to classnames generated
-      // by styled-components
+      // by styled-components.
       ...(command === "serve" && {
         babel: {
           plugins: [

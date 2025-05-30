@@ -7,6 +7,8 @@ export default function useGiveConsent() {
 
   return useMutation<void, unknown, AddConsentArgs, void>({
     mutationFn: addConsent,
+    // Optimistically clear any cached consent-related queries before mutation starts.
+    // This ensures that outdated data won't be shown after mutation completes.
     onMutate: () => {
       queryClient.removeQueries(consentsQueryKeys.all);
     },

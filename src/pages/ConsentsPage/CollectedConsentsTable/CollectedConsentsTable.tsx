@@ -11,9 +11,13 @@ const CollectedConsentsTable: React.FC = () => {
   const [page, setPage] = useState(DEFAULT_PAGE);
   const [rowsPerPage, setRowsPerPage] = useState(DEFAULT_ROWS_PER_PAGE);
 
+  // Fetches the current page of consent records. Falls back to an empty array to
+  // avoid undefined issues during initial render.
   const { data: collectedConsents = [] } = useConsentsList(page, rowsPerPage);
   const queryClient = useQueryClient();
 
+  // Handles page change and manually invalidates the query cache for the old page.
+  // Ensures new data is fetched even if cached data exists.
   const handlePageChange = useCallback(
     (nextPage: number): void => {
       setPage(nextPage);
@@ -25,6 +29,8 @@ const CollectedConsentsTable: React.FC = () => {
     [page, queryClient, rowsPerPage]
   );
 
+  // Handles change in rows per page and resets to page 0. Triggers re-fetch to
+  // keep displayed data in sync.
   const handleChangeRowsPerPage: React.ChangeEventHandler<HTMLInputElement> =
     useCallback(
       (event): void => {

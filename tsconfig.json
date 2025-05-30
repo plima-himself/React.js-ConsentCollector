@@ -15,9 +15,10 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "types": ["vitest/globals", "@testing-library/jest-dom"]
   },
   "files": [],
-  "include": ["src", "test/setup.ts"],
+  "include": ["src", "src/setup.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

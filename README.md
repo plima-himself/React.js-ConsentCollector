@@ -41,6 +41,7 @@ The app should now be running at http://localhost:5173
 - React Query
 - React Hook Form
 - Yup
+- React Testing Library
 
 ---
 

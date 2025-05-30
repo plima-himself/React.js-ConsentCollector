@@ -1,0 +1,1 @@
+export const CONSENT_SERVICE_URL = import.meta.env.VITE_APP_CONSENT_SERVICE_URL;

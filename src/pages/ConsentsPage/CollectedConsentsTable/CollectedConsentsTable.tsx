@@ -1,31 +1,42 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Table, TableBody, TableContainer } from "@mui/material";
 import ConsentTableHead from "./CollectedConsentsTableHead";
 import ConsentTablePagination from "./CollectedConsentsTablePagination";
 import { DEFAULT_PAGE, DEFAULT_ROWS_PER_PAGE } from "./constants";
 import CollectedConsentsTableRow from "./CollectedConsentsTableRow";
+import { consentsQueryKeys, useConsentsList } from "state";
+import { useQueryClient } from "react-query";
 
-type CollectedConsentsTableProps = {
-  // TODO-PL: Update this type.
-  collectedConsents: {
-    name: string;
-    email: string;
-    consent: string[];
-  }[];
-};
-
-const CollectedConsentsTable: React.FC<CollectedConsentsTableProps> = ({
-  collectedConsents,
-}) => {
+const CollectedConsentsTable: React.FC = () => {
   const [page, setPage] = useState(DEFAULT_PAGE);
   const [rowsPerPage, setRowsPerPage] = useState(DEFAULT_ROWS_PER_PAGE);
 
-  const handleChangeRowsPerPage: React.ChangeEventHandler<HTMLInputElement> = (
-    event
-  ) => {
-    setPage(0);
-    setRowsPerPage(parseInt(event.target.value, 10));
-  };
+  const { data: collectedConsents = [] } = useConsentsList(page, rowsPerPage);
+  const queryClient = useQueryClient();
+
+  const handlePageChange = useCallback(
+    (nextPage: number): void => {
+      setPage(nextPage);
+
+      queryClient.invalidateQueries(
+        consentsQueryKeys.consents(page, rowsPerPage)
+      );
+    },
+    [page, queryClient, rowsPerPage]
+  );
+
+  const handleChangeRowsPerPage: React.ChangeEventHandler<HTMLInputElement> =
+    useCallback(
+      (event): void => {
+        setPage(0);
+        setRowsPerPage(parseInt(event.target.value, 10));
+
+        queryClient.invalidateQueries(
+          consentsQueryKeys.consents(page, rowsPerPage)
+        );
+      },
+      [page, queryClient, rowsPerPage]
+    );
 
   return (
     <>
@@ -34,17 +45,14 @@ const CollectedConsentsTable: React.FC<CollectedConsentsTableProps> = ({
           <ConsentTableHead />
 
           <TableBody>
-            <CollectedConsentsTableRow
-              {...{ page, rowsPerPage, collectedConsents }}
-            />
+            <CollectedConsentsTableRow collectedConsents={collectedConsents} />
           </TableBody>
         </Table>
       </TableContainer>
 
       <ConsentTablePagination
         {...{ page, rowsPerPage }}
-        count={collectedConsents.length}
-        onPageChange={setPage}
+        onPageChange={handlePageChange}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
     </>

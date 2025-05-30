@@ -31,8 +31,16 @@ The app should now be running at http://localhost:5173
 ## 🚀️ Technologies
 
 - Vite
-- React.js
+- React
 - TypeScript
+- Material UI
+- Styled Components
+- Framer Motion
+- React Router
+- Axios
+- React Query
+- React Hook Form
+- Yup
 
 ---
 

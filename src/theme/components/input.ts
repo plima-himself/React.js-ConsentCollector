@@ -7,9 +7,14 @@ export const inputComponents: ThemeOptions["components"] = {
         "& .MuiOutlinedInput-notchedOutline": {
           borderColor: "white",
         },
-        "&:hover .MuiOutlinedInput-notchedOutline": {
-          borderColor: "white",
-        },
+        "&:hover:not(.Mui-disabled):not(.Mui-error) .MuiOutlinedInput-notchedOutline":
+          {
+            borderColor: "white",
+          },
+        "&:hover:not(.Mui-disabled).Mui-error .MuiOutlinedInput-notchedOutline":
+          {
+            borderColor: "#f44336",
+          },
         "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
           borderColor: "white",
         },

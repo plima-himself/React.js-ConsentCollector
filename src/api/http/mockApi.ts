@@ -109,7 +109,7 @@ export function setupAxiosMock() {
       ...body,
     };
 
-    saveConsentsToStorage([...consents, newConsent]);
+    saveConsentsToStorage([newConsent, ...consents]);
 
     return [201];
   });

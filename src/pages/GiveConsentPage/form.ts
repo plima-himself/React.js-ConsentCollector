@@ -1,10 +1,11 @@
 import { CheckboxField } from "components/Forms/CheckboxGroup";
+import { CONSENT_BY_KEY } from "config";
 import { boolean, InferType, object, string } from "yup";
 
 export const giveConsentFormSchema = object({
   name: string().required("Name is required"),
   email: string().email("Invalid email").required("Email is required"),
-  preferences: object({
+  consents: object({
     newsletter: boolean(),
     ads: boolean(),
     stats: boolean(),
@@ -20,25 +21,25 @@ export type GiveConsentFormData = InferType<typeof giveConsentFormSchema>;
 export const DEFAULT_GIVE_CONSENT_FORM_VALUES: GiveConsentFormData = {
   name: "",
   email: "",
-  preferences: {
+  consents: {
     newsletter: false,
     ads: false,
     stats: false,
   },
 };
 
-export const PREFERENCE_FIELDS: CheckboxField<`preferences.${keyof GiveConsentFormData["preferences"]}`>[] =
+export const PREFERENCE_FIELDS: CheckboxField<`consents.${keyof GiveConsentFormData["consents"]}`>[] =
   [
     {
-      label: "Receive newsletter",
-      name: "preferences.newsletter",
+      label: CONSENT_BY_KEY.newsletter,
+      name: "consents.newsletter",
     },
     {
-      label: "Be shown targeted ads",
-      name: "preferences.ads",
+      label: CONSENT_BY_KEY.ads,
+      name: "consents.ads",
     },
     {
-      label: "Contribute to anonymous visit statistics",
-      name: "preferences.stats",
+      label: CONSENT_BY_KEY.stats,
+      name: "consents.stats",
     },
   ];

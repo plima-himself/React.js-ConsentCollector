@@ -1,6 +1,6 @@
 import { ConsentType, GetConsentsResult, Pagination } from "api";
-import { CONSENT_BY_KEY } from "./constants";
 import { ConsentWithStringConsents } from "./types";
+import { CONSENT_BY_KEY } from "config";
 
 export const useConsentsListSelector = (
   result: GetConsentsResult

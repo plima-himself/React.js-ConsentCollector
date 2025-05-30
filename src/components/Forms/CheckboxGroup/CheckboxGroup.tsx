@@ -11,12 +11,14 @@ import { CheckboxField } from "./types";
 type CheckboxGroupProps<T extends Record<string, any>> = {
   label?: React.ReactNode;
   fields: CheckboxField<FieldPath<T>>[];
+  disabled?: boolean;
   control: Control<T>;
 };
 
 const CheckboxGroup = <T extends Record<string, any>>({
   label,
   fields,
+  disabled,
   control,
 }: CheckboxGroupProps<T>) => (
   <>
@@ -29,7 +31,7 @@ const CheckboxGroup = <T extends Record<string, any>>({
     <FormGroup>
       {fields.map(({ label, name }) => (
         <Controller
-          {...{ name, control }}
+          {...{ name, control, disabled }}
           key={name}
           render={({ field }) => (
             <FormControlLabel

@@ -10,6 +10,10 @@ import {
   giveConsentFormSchema,
   PREFERENCE_FIELDS,
 } from "./form";
+import { useGiveConsent } from "state";
+import { AddConsentArgs } from "api";
+import { useNavigate } from "react-router-dom";
+import paths from "paths";
 
 const GiveConsentPage: React.FC = () => {
   const {
@@ -22,8 +26,13 @@ const GiveConsentPage: React.FC = () => {
     defaultValues: DEFAULT_GIVE_CONSENT_FORM_VALUES,
   });
 
-  const onSubmit = (data: GiveConsentFormData) => {
-    console.log("Form submitted:", data);
+  const { mutateAsync: giveConsent, isLoading } = useGiveConsent();
+  const navigate = useNavigate();
+
+  const onSubmit = async (data: GiveConsentFormData) => {
+    await giveConsent(data as AddConsentArgs);
+
+    navigate(paths.consents.value);
   };
 
   return (
@@ -34,6 +43,7 @@ const GiveConsentPage: React.FC = () => {
           label="Name"
           control={control}
           error={errors.name?.message}
+          disabled={isLoading}
         />
 
         <TextField<GiveConsentFormData>
@@ -41,17 +51,19 @@ const GiveConsentPage: React.FC = () => {
           label="Email address"
           control={control}
           error={errors.email?.message}
+          disabled={isLoading}
         />
 
         <CheckboxGroup<GiveConsentFormData>
           label="I agree to"
           fields={PREFERENCE_FIELDS}
           control={control}
+          disabled={isLoading}
         />
 
-        {errors.preferences?.message && (
+        {errors.consents?.message && (
           <Typography color="error" variant="body2" sx={{ mt: 1 }}>
-            {errors.preferences.message}
+            {errors.consents.message}
           </Typography>
         )}
 
@@ -60,7 +72,9 @@ const GiveConsentPage: React.FC = () => {
           type="submit"
           variant="contained"
           color="primary"
-          disabled={!isValid}
+          loadingPosition="start"
+          disabled={!isValid || isLoading}
+          loading={isLoading}
           sx={{ mt: 3 }}
         >
           Give consent

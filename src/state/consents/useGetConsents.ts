@@ -23,15 +23,7 @@ function useGetConsents<TData = GetConsentsResult>(
   return useQuery(
     consentsQueryKeys.consents(page, perPage),
     async () => await getConsents({ page, perPage }),
-    {
-      ...opts,
-      // Duration that the data is considered fresh. During this time, no refetch
-      // will occur even if the component remounts.
-      staleTime: Infinity,
-      // How long the cached data stays in memory after the last observer unsubscribes
-      // (e.g., component unmounts).
-      cacheTime: Infinity,
-    }
+    opts
   );
 }
 

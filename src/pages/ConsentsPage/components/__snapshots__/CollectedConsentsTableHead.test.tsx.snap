@@ -1,0 +1,40 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CollectedConsentsTableHead > matches snapshot 1`] = `
+<div>
+  <table>
+    <thead
+      class="MuiTableHead-root css-1a7iywq-MuiTableHead-root"
+    >
+      <tr
+        class="MuiTableRow-root MuiTableRow-head css-1xtozoh-MuiTableRow-root"
+      >
+        <th
+          class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-6ssiqt-MuiTableCell-root"
+          scope="col"
+        >
+          <strong>
+            Name
+          </strong>
+        </th>
+        <th
+          class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-n5qgyl-MuiTableCell-root"
+          scope="col"
+        >
+          <strong>
+            Email
+          </strong>
+        </th>
+        <th
+          class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-en18vu-MuiTableCell-root"
+          scope="col"
+        >
+          <strong>
+            Consent given for
+          </strong>
+        </th>
+      </tr>
+    </thead>
+  </table>
+</div>
+`;

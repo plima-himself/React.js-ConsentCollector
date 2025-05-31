@@ -23,9 +23,8 @@ vi.mock("state", () => ({
   useGiveConsent: () => ({ mutateAsync: mockMutateAsync, isLoading: false }),
 }));
 
-describe("GiveConsentPage integration", () => {
+describe("GiveConsentPage (integration)", () => {
   it("fills and submits form successfully", async () => {
-    // Render the page with any necessary context providers (e.g. react-query, router).
     renderWithProviders(<GiveConsentPage />);
 
     // Find and assert that name and email inputs are rendered.

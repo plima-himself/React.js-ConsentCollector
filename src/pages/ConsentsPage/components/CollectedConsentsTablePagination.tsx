@@ -1,6 +1,6 @@
 import React from "react";
 import { TablePagination } from "@mui/material";
-import { DEFAULT_ROWS_PER_PAGE_OPTIONS } from "./constants";
+import { DEFAULT_ROWS_PER_PAGE_OPTIONS } from "../constants";
 import { useConsentsListPagination } from "state";
 
 type CollectedConsentsTablePaginationProps = {

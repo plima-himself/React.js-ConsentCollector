@@ -1,5 +1,5 @@
 import { act, renderHook } from "@testing-library/react";
-import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryClient } from "react-query";
 import useGiveConsent from "./useGiveConsent";
 import { vi } from "vitest";
 import {
@@ -8,6 +8,7 @@ import {
 } from "./selectors";
 import { CONSENT_BY_KEY } from "config";
 import { AddConsentArgs } from "api";
+import { getQueryClientWrapper } from "tests";
 
 // Mock the API call used in the mutation.
 vi.mock("api", () => ({
@@ -21,13 +22,10 @@ describe("useGiveConsent", () => {
     const queryClient = new QueryClient();
     const removeSpy = vi.spyOn(queryClient, "removeQueries");
 
-    // Wrap hook with QueryClientProvider.
-    const wrapper = ({ children }: { children: React.ReactNode }) => (
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-    );
-
     // Render the hook.
-    const { result } = renderHook(() => useGiveConsent(), { wrapper });
+    const { result } = renderHook(() => useGiveConsent(), {
+      wrapper: ({ children }) => getQueryClientWrapper(children, queryClient),
+    });
 
     // Trigger mutation inside act.
     await act(async () => {

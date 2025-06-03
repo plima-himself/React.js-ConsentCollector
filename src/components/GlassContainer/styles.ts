@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { styled } from "@mui/material/styles"; // import { MOBILE_BREAKPOINT_PX } from "config";
+import { styled } from "@mui/material/styles";
 import { motion } from "framer-motion";
 
 export const Root = styled(motion.create(Box))(({ theme }) => ({

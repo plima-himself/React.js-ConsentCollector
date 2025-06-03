@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Typography } from "@mui/material";
+import { Button } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import GlassContainer from "components/GlassContainer";
@@ -61,13 +61,6 @@ const GiveConsentPage: React.FC = () => {
           control={control}
           disabled={isLoading}
         />
-
-        {/* Displays a general error if no consents are selected */}
-        {errors.consents?.message && (
-          <Typography color="error" variant="body2" sx={{ mt: 1 }}>
-            {errors.consents.message}
-          </Typography>
-        )}
 
         <Button
           fullWidth
